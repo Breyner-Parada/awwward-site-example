@@ -70,7 +70,6 @@ export const Hero = () => {
     { dependencies: [currentIndex], revertOnUpdate: true }
   );
 
-
   useGSAP(() => {
     gsap.set("#video-frame", {
       clipPath: "polygon(10% 0, 70% 2%, 92% 89%, 1% 97%)",
@@ -115,13 +114,14 @@ export const Hero = () => {
               className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in-out hover:scale-100 hover:opacity-100"
             >
               <video
-                ref={nextVideoRef}
                 src={getVideoSrc(upcomingVideoIndex)}
                 loop
                 muted
+                preload="auto"
                 id="current-video"
                 className="size-64 origin-center scale-150 object-cover object-center"
-                onLoadedData={handleVideoLoad}
+                onLoadedData={() => setIsLoading(false)}
+                onError={() => console.error("Error loading video")}
               />
             </div>
           </div>
@@ -131,6 +131,7 @@ export const Hero = () => {
             loop
             muted
             id="next-video"
+            preload="auto"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
           />
@@ -141,6 +142,7 @@ export const Hero = () => {
             autoPlay
             loop
             muted
+            preload="auto"
             className="absolute left-0 top-0 size-full object-cover object-center"
             onLoadedData={handleVideoLoad}
           />
