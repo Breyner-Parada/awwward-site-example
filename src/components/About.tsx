@@ -21,11 +21,17 @@ export const About = () => {
           pinSpacing: true,
         },
       });
+      clipAnimation.set(".mask-clip-path", {
+        borderRadius: "1.5rem",
+      });
       clipAnimation.to(".mask-clip-path", {
         width: "100vw",
         height: "100vh",
         ease: "power1.inOut",
         duration: 1,
+        onComplete: () => {
+          gsap.to(".mask-clip-path", { borderRadius: 0 });
+        },
       });
     },
     { dependencies: [] }
