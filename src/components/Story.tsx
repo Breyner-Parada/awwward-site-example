@@ -103,6 +103,13 @@ const Story = () => {
             </div>
           </div>
         </div>
+        <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
+          <div className="flex h-full w-fit flex-col items-center md:items-start">
+            <p className="font-general text-sm uppercase md:text-[10px]">
+              Discover the entrance to a world of endless possibilities.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
