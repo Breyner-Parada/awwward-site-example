@@ -16,7 +16,6 @@ const NavBar = () => {
   const [isIndicatorActive, setIsIndicatorActive] =
     React.useState<boolean>(false);
   const [lastScrollY, setLastScrollY] = React.useState<number>(0);
-  const [isNavVisible, setIsNavVisible] = React.useState<boolean>(true);
 
   const toggleAudioIndicator = () => {
     if (audioRef.current) {
@@ -36,17 +35,14 @@ const NavBar = () => {
     const nav = navContainerRef.current;
     if (!nav) return;
     if (scrollY === 0) {
-      setIsNavVisible(true);
       nav.classList.remove("floating-nav");
     } else if (scrollY > lastScrollY && scrollY > 100) {
       // Scrolling down
       nav.style.transform = "translateY(-150%)";
-      setIsNavVisible(false);
       nav.classList.add("floating-nav");
     } else {
       // Scrolling up
       nav.style.transform = "translateY(0)";
-      setIsNavVisible(true);
       nav.classList.add("floating-nav");
     }
     setLastScrollY(scrollY);
@@ -98,7 +94,7 @@ const NavBar = () => {
                 src="/audio/loop.mp3"
                 loop
               />
-              {[1, 2, 3, 4].map((bar, i) => (
+              {[1, 2, 3, 4].map((bar) => (
                 <div
                   key={bar}
                   className={`indicator-line ${

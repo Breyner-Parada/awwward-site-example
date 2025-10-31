@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import AnimatedTitle from "./AnimatedTitle";
 
 const Story = () => {
@@ -90,12 +91,14 @@ const Story = () => {
           <div className="story-img-container">
             <div className="story-img-mask">
               <div className="story-img-content">
-                <img
+                <Image
                   onMouseEnter={handleMouseEnter}
                   onMouseMove={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                   src="/img/entrance.webp"
                   alt="entrance"
+                  layout="fill"
+                  objectFit="cover"
                   className="object-contain"
                   ref={imgRef}
                 />
